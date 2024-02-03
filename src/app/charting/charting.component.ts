@@ -38,22 +38,19 @@ export class ChartingComponent {
         { "spendingType": "Savings", "spendingAmount": 280, "spendingDate": "2024-05-25" }
       
     ];
-    single: any[] = []; // ngx-charts require data in a specific format
-
-    view: [number, number] = [700, 400]; // Adjust dimensions as needed
-  
-    // Customize colors as needed
+    single: any[] = [];   
+    view: [number, number] = [700, 400];
     colorScheme:Color = {
       domain: ['#FF6384', '#36A2EB', '#FFCE56', '#4CAF50', '#9C27B0'],
-      name: 'Custom Scheme', // Provide a name
-      selectable: true,      // Specify whether colors are selectable
+      name: 'Custom Scheme', 
+      selectable: true,      
       group: ScaleType.Ordinal, 
      };
   
     constructor() { }
   
     ngOnInit(): void {
-      const filteredData = this.filterDataByMonth('2024-05'); // Change the month as needed
+      const filteredData = this.filterDataByMonth('2024-05');
       const totalSpendingByType = this.calculateTotalSpending(filteredData);
   
       this.single = Object.keys(totalSpendingByType).map(spendingType => ({
